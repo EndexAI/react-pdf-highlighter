@@ -7,21 +7,21 @@ import {
   PdfLoader,
   Popup,
   Tip,
-} from "./react-pdf-highlighter";
+} from "@endexai/react-pdf-highlighter-patch";
 
 import type {
   Content,
   IHighlight,
   NewHighlight,
   ScaledPosition,
-} from "./react-pdf-highlighter";
+} from "@endexai/react-pdf-highlighter-patch";
 
 import { Sidebar } from "./Sidebar";
 import { Spinner } from "./Spinner";
 import { testHighlights as _testHighlights } from "./test-highlights";
 
 import "./style/App.css";
-import "../../dist/style.css";
+import "@endexai/react-pdf-highlighter-patch/dist/style.css";
 
 const testHighlights: Record<string, Array<IHighlight>> = _testHighlights;
 

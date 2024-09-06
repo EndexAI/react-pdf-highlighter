@@ -1,3 +1,5 @@
+import "./style/index.css";
+
 export { PdfHighlighter } from "./components/PdfHighlighter";
 export { Tip } from "./components/Tip";
 export { Highlight } from "./components/Highlight";

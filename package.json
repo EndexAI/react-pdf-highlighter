@@ -1,15 +1,32 @@
 {
-  "name": "@endexai/react-pdf-highlighter",
-  "version": "7.0.2",
+  "name": "@endexai/react-pdf-highlighter-patch",
+  "version": "7.1.1",
   "description": "Set of React components for PDF annotation",
   "author": "Artem Tyurin <artem.tyurin@gmail.com>",
   "license": "MIT",
-  "keywords": ["pdf", "highlight", "annotator", "react-component"],
-  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": [
+    "pdf",
+    "highlight",
+    "annotator",
+    "react-component"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
-  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "scripts": {
     "start": "npm run dev",
     "dev": "vite build && (cd ./example && vite)",
@@ -26,6 +43,7 @@
     "react-dom": ">=18.0.0"
   },
   "dependencies": {
+    "@endexai/react-pdf-highlighter-patch": "^7.1.1",
     "debounce": "^2.1.0",
     "pdfjs-dist": "^4.4.168",
     "react-rnd": "^10.4.11"

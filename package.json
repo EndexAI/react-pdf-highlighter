@@ -1,6 +1,6 @@
 {
   "name": "@endexai/react-pdf-highlighter-patch",
-  "version": "8.0.0",
+  "version": "8.0.3",
   "description": "Set of React components for PDF annotation",
   "author": "Artem Tyurin <artem.tyurin@gmail.com>",
   "license": "MIT",
@@ -30,14 +30,14 @@
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
-    "react": ">=18.0.0 || ^19.0.0",
-    "react-dom": ">=18.0.0 || ^19.0.0"
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
   },
   "dependencies": {
-    "@endexai/react-pdf-highlighter-patch": "^7.1.1",
+    "@endexai/react-pdf-highlighter-patch": "8.0.3",
     "debounce": "^2.1.0",
-    "pdfjs-dist": "^4.4.168",
-    "react-rnd": "^10.4.11"
+    "pdfjs-dist": "^4.9.155",
+    "react-rnd": "^10.4.13"
   },
   "repository": {
     "type": "git",
@@ -62,5 +62,8 @@
   "directories": {
     "example": "example"
   },
-  "homepage": "https://github.com/agentcooper/react-pdf-highlighter#readme"
+  "homepage": "https://github.com/agentcooper/react-pdf-highlighter#readme",
+  "resolutions": {
+    "re-resizable": "6.10.3"
+  }
 }

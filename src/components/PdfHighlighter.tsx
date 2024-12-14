@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import styles from "../style/PdfHighlighter.module.css";
 
 import debounce from "debounce";
@@ -103,7 +104,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
 
   resizeObserver: ResizeObserver | null = null;
   containerNode?: HTMLDivElement | null = null;
-  containerNodeRef: RefObject<HTMLDivElement>;
+  containerNodeRef: RefObject<HTMLDivElement | null>;
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
@@ -114,7 +115,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
     if (typeof ResizeObserver !== "undefined") {
       this.resizeObserver = new ResizeObserver(this.debouncedScaleValue);
     }
-    this.containerNodeRef = React.createRef();
+    this.containerNodeRef = React.createRef<HTMLDivElement | null>();
   }
 
   componentDidMount() {
@@ -645,6 +646,10 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         this.renderHighlightLayer(highlightRoot.reactRoot, pageNumber);
       } else {
         const highlightLayer = this.findOrCreateHighlightLayer(pageNumber);
+        if (!highlightLayer) {
+          console.error(`Highlight layer not found for page ${pageNumber}`);
+          continue;
+        }
         if (highlightLayer) {
           const reactRoot = createRoot(highlightLayer);
           this.highlightRoots[pageNumber] = {

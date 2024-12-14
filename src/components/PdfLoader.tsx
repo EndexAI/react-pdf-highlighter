@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, type JSX } from "react";
 
 import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
 import type { PDFDocumentProxy } from "pdfjs-dist";
@@ -28,7 +28,7 @@ export class PdfLoader extends Component<Props, State> {
   };
 
   static defaultProps = {
-    workerSrc: "https://unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs",
+    workerSrc: "https://unpkg.com/pdfjs-dist@4.9.155/build/pdf.worker.min.mjs",
   };
 
   documentRef = React.createRef<HTMLElement>();
@@ -44,13 +44,14 @@ export class PdfLoader extends Component<Props, State> {
     }
   }
 
-  componentDidUpdate({ url }: Props) {
-    if (this.props.url !== url) {
+  componentDidUpdate({ url: prevUrl }: Props) {
+    if (this.props.url !== prevUrl) {
       this.load();
     }
   }
 
   componentDidCatch(error: Error) {
+    console.error("[PdfLoader] Error caught:", error);
     const { onError } = this.props;
 
     if (onError) {
@@ -64,6 +65,7 @@ export class PdfLoader extends Component<Props, State> {
     const { ownerDocument = document } = this.documentRef.current || {};
     const { url, cMapUrl, cMapPacked, workerSrc } = this.props;
     const { pdfDocument: discardedDocument } = this.state;
+
     this.setState({ pdfDocument: null, error: null });
 
     if (typeof workerSrc === "string") {
@@ -71,7 +73,11 @@ export class PdfLoader extends Component<Props, State> {
     }
 
     Promise.resolve()
-      .then(() => discardedDocument?.destroy())
+      .then(() => {
+        if (discardedDocument) {
+          return discardedDocument.destroy();
+        }
+      })
       .then(() => {
         if (!url) {
           return;
@@ -88,7 +94,10 @@ export class PdfLoader extends Component<Props, State> {
           this.setState({ pdfDocument });
         });
       })
-      .catch((e) => this.componentDidCatch(e));
+      .catch((e) => {
+        console.error("[PdfLoader] Error loading PDF:", e);
+        this.componentDidCatch(e);
+      });
   }
 
   render() {

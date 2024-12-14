@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 import { viewportToScaled } from "../lib/coordinates";
 import type {
   IHighlight,

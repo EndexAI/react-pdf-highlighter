@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, type JSX } from "react";
 import styles from "../style/TipContainer.module.css";
 import type { LTWHP } from "../types";
 

@@ -78,7 +78,7 @@ interface Props<T_HT> {
   ) => JSX.Element | null;
   enableAreaSelection: (event: MouseEvent) => boolean;
   endexFileId?: string;
-  onFileLoad?: (fileId: string) => void;
+  onFileLoad: (fileId?: string) => void;
 }
 
 const EMPTY_ID = "empty-id";
@@ -106,7 +106,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
 
   resizeObserver: ResizeObserver | null = null;
   containerNode?: HTMLDivElement | null = null;
-  containerNodeRef: RefObject<HTMLDivElement>;
+  containerNodeRef: RefObject<HTMLDivElement | null>;
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
@@ -117,7 +117,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
     if (typeof ResizeObserver !== "undefined") {
       this.resizeObserver = new ResizeObserver(this.debouncedScaleValue);
     }
-    this.containerNodeRef = React.createRef();
+    this.containerNodeRef = React.createRef<HTMLDivElement | null>();
   }
 
   componentDidMount() {
@@ -419,9 +419,8 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
 
     scrollRef(this.scrollTo);
 
-    if (endexFileId) {
-      onFileLoad?.(endexFileId);
-    }
+    onFileLoad(endexFileId);
+
   };
 
   onSelectionChange = () => {

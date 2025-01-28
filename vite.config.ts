@@ -10,7 +10,13 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        /^react\/.*/,
+        /^react-dom\/.*/,
+      ],
       plugins: [ts()],
     },
   },

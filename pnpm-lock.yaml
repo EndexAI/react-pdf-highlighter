@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@endexai/react-pdf-highlighter-patch':
-        specifier: 8.0.6
-        version: 8.0.6(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206)
+        specifier: 8.0.8
+        version: 8.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       debounce:
         specifier: ^2.1.0
         version: 2.2.0
@@ -21,14 +21,14 @@ importers:
         specifier: ^4.9.155
         version: 4.9.155
       react:
-        specifier: 19.0.0-rc-7283a213-20241206
-        version: 19.0.0-rc-7283a213-20241206
+        specifier: '>=19.0.0'
+        version: 19.0.0
       react-dom:
-        specifier: 19.0.0-rc-7283a213-20241206
-        version: 19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206)
+        specifier: '>=19.0.0'
+        version: 19.0.0(react@19.0.0)
       react-rnd:
         specifier: ^10.4.13
-        version: 10.4.13(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206)
+        version: 10.4.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@biomejs/biome':
         specifier: 1.8.3
@@ -202,11 +202,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@endexai/react-pdf-highlighter-patch@8.0.6':
-    resolution: {integrity: sha512-YOCgK+k3e/oemblGcVQUO3ucEdniUuyJapBQvjETHOZgiduNUDUbVVLSF8SGoWOoG4fKTrytNwlGOqZttawG6w==}
+  '@endexai/react-pdf-highlighter-patch@8.0.8':
+    resolution: {integrity: sha512-Vsfzm2X1ThXEI19rLBXQeDHIFucEcFjn4iovFLKJ1EJ0bbNrbAf6ZU551BY3d/EMWpHQrNkPQNx+gqx41BmB0Q==}
     peerDependencies:
-      react: 19.0.0
-      react-dom: 19.0.0
+      react: 19.0.0-rc-7283a213-20241206
+      react-dom: 19.0.0-rc-7283a213-20241206
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -740,10 +740,10 @@ packages:
       react: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  react-dom@19.0.0-rc-7283a213-20241206:
-    resolution: {integrity: sha512-SmMSvpa+J1XfHyEX8gwBTeKh/FewFdwCTvFVPMkAIEDnZsFt+yNXSAJNSKqXvgVSFU7UL+awN9sDneffJJwr1Q==}
+  react-dom@19.0.0:
+    resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
-      react: 19.0.0-rc-7283a213-20241206
+      react: ^19.0.0
 
   react-draggable@4.4.6:
     resolution: {integrity: sha512-LtY5Xw1zTPqHkVmtM3X8MUOxNDOUhv/khTgBgrUvwaS064bwVvxT+q5El0uUFNx5IEPKXuRejr7UqLwBIg5pdw==}
@@ -764,8 +764,8 @@ packages:
       react: '>=16.3.0'
       react-dom: '>=16.3.0'
 
-  react@19.0.0-rc-7283a213-20241206:
-    resolution: {integrity: sha512-Jl/WSFghvrXr58g29BOBctG+uh3qvB05O149bsYVzv1OAOWe8ADElQn0ujSHjxcWAgU5UzsCqqRauzngjd/hgw==}
+  react@19.0.0:
+    resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -780,8 +780,8 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  scheduler@0.25.0-rc-7283a213-20241206:
-    resolution: {integrity: sha512-rv6fUiCpVctRLUSnlq+WKfX60AqAoVG4lVM+HuSCkaCIAolRcL0QpzeUcnsyxWfI//lzRPtAdlNwD5l6l58z3Q==}
+  scheduler@0.25.0:
+    resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -998,13 +998,13 @@ snapshots:
   '@biomejs/cli-win32-x64@1.8.3':
     optional: true
 
-  '@endexai/react-pdf-highlighter-patch@8.0.6(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206)':
+  '@endexai/react-pdf-highlighter-patch@8.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       debounce: 2.2.0
       pdfjs-dist: 4.9.155
-      react: 19.0.0-rc-7283a213-20241206
-      react-dom: 19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206)
-      react-rnd: 10.4.13(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-rnd: 10.4.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
@@ -1396,36 +1396,36 @@ snapshots:
       object-assign: 4.1.1
       react-is: 16.13.1
 
-  re-resizable@6.10.3(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206):
+  re-resizable@6.10.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      react: 19.0.0-rc-7283a213-20241206
-      react-dom: 19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
-  react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206):
+  react-dom@19.0.0(react@19.0.0):
     dependencies:
-      react: 19.0.0-rc-7283a213-20241206
-      scheduler: 0.25.0-rc-7283a213-20241206
+      react: 19.0.0
+      scheduler: 0.25.0
 
-  react-draggable@4.4.6(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206):
+  react-draggable@4.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       clsx: 1.2.1
       prop-types: 15.8.1
-      react: 19.0.0-rc-7283a213-20241206
-      react-dom: 19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   react-is@16.13.1: {}
 
   react-refresh@0.14.2: {}
 
-  react-rnd@10.4.13(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206):
+  react-rnd@10.4.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      re-resizable: 6.10.3(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206)
-      react: 19.0.0-rc-7283a213-20241206
-      react-dom: 19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206)
-      react-draggable: 4.4.6(react-dom@19.0.0-rc-7283a213-20241206(react@19.0.0-rc-7283a213-20241206))(react@19.0.0-rc-7283a213-20241206)
+      re-resizable: 6.10.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      react-draggable: 4.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tslib: 2.6.2
 
-  react@19.0.0-rc-7283a213-20241206: {}
+  react@19.0.0: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -1462,7 +1462,7 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.28.1
       fsevents: 2.3.3
 
-  scheduler@0.25.0-rc-7283a213-20241206: {}
+  scheduler@0.25.0: {}
 
   semver@6.3.1: {}
 

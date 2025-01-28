@@ -646,10 +646,6 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         this.renderHighlightLayer(highlightRoot.reactRoot, pageNumber);
       } else {
         const highlightLayer = this.findOrCreateHighlightLayer(pageNumber);
-        if (!highlightLayer) {
-          console.error(`Highlight layer not found for page ${pageNumber}`);
-          continue;
-        }
         if (highlightLayer) {
           const reactRoot = createRoot(highlightLayer);
           this.highlightRoots[pageNumber] = {

@@ -12,13 +12,13 @@ importers:
   .:
     dependencies:
       '@endexai/react-pdf-highlighter-patch':
-        specifier: 8.0.8
-        version: 8.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: workspace:8.1.5
+        version: 'link:'
       debounce:
         specifier: ^2.1.0
         version: 2.2.0
       pdfjs-dist:
-        specifier: ^4.9.155
+        specifier: 4.9.155
         version: 4.9.155
       react:
         specifier: '>=19.0.0'
@@ -201,12 +201,6 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
-
-  '@endexai/react-pdf-highlighter-patch@8.0.8':
-    resolution: {integrity: sha512-Vsfzm2X1ThXEI19rLBXQeDHIFucEcFjn4iovFLKJ1EJ0bbNrbAf6ZU551BY3d/EMWpHQrNkPQNx+gqx41BmB0Q==}
-    peerDependencies:
-      react: 19.0.0-rc-7283a213-20241206
-      react-dom: 19.0.0-rc-7283a213-20241206
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -997,14 +991,6 @@ snapshots:
 
   '@biomejs/cli-win32-x64@1.8.3':
     optional: true
-
-  '@endexai/react-pdf-highlighter-patch@8.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
-    dependencies:
-      debounce: 2.2.0
-      pdfjs-dist: 4.9.155
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      react-rnd: 10.4.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true

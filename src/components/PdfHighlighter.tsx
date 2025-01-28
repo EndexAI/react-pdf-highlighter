@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import styles from "../style/PdfHighlighter.module.css";
 
 import debounce from "debounce";
@@ -31,7 +32,6 @@ import type {
 import { HighlightLayer } from "./HighlightLayer";
 import MouseSelection from "./MouseSelection";
 import TipContainer from "./TipContainer";
-import type { JSX } from "react";
 
 export type T_ViewportHighlight<T_HT> = { position: Position } & T_HT;
 
@@ -110,7 +110,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
-  unsubscribe = () => { };
+  unsubscribe = () => {};
 
   constructor(props: Props<T_HT>) {
     super(props);
@@ -393,7 +393,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         ...pageViewport.convertToPdfPoint(
           0,
           scaledToViewport(boundingRect, pageViewport, usePdfCoordinates).top -
-          scrollMargin,
+            scrollMargin,
         ),
         0,
       ],
@@ -420,7 +420,6 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
     scrollRef(this.scrollTo);
 
     onFileLoad(endexFileId);
-
   };
 
   onSelectionChange = () => {

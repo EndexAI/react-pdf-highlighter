@@ -1,4 +1,3 @@
-import type { JSX } from "react";
 import styles from "../style/PdfHighlighter.module.css";
 
 import debounce from "debounce";
@@ -77,6 +76,8 @@ interface Props<T_HT> {
     transformSelection: () => void,
   ) => JSX.Element | null;
   enableAreaSelection: (event: MouseEvent) => boolean;
+  endexFileId?: string;
+  onFileLoad?: (fileId: string) => void;
 }
 
 const EMPTY_ID = "empty-id";
@@ -104,18 +105,18 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
 
   resizeObserver: ResizeObserver | null = null;
   containerNode?: HTMLDivElement | null = null;
-  containerNodeRef: RefObject<HTMLDivElement | null>;
+  containerNodeRef: RefObject<HTMLDivElement>;
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
-  unsubscribe = () => {};
+  unsubscribe = () => { };
 
   constructor(props: Props<T_HT>) {
     super(props);
     if (typeof ResizeObserver !== "undefined") {
       this.resizeObserver = new ResizeObserver(this.debouncedScaleValue);
     }
-    this.containerNodeRef = React.createRef<HTMLDivElement | null>();
+    this.containerNodeRef = React.createRef();
   }
 
   componentDidMount() {
@@ -391,7 +392,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         ...pageViewport.convertToPdfPoint(
           0,
           scaledToViewport(boundingRect, pageViewport, usePdfCoordinates).top -
-            scrollMargin,
+          scrollMargin,
         ),
         0,
       ],
@@ -411,11 +412,15 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
   };
 
   onDocumentReady = () => {
-    const { scrollRef } = this.props;
+    const { scrollRef, endexFileId, onFileLoad } = this.props;
 
     this.handleScaleValue();
 
     scrollRef(this.scrollTo);
+
+    if (endexFileId) {
+      onFileLoad?.(endexFileId);
+    }
   };
 
   onSelectionChange = () => {

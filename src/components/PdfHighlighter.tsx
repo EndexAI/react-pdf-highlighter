@@ -31,6 +31,7 @@ import type {
 import { HighlightLayer } from "./HighlightLayer";
 import MouseSelection from "./MouseSelection";
 import TipContainer from "./TipContainer";
+import type { JSX } from "react";
 
 export type T_ViewportHighlight<T_HT> = { position: Position } & T_HT;
 

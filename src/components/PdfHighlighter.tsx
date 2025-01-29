@@ -110,7 +110,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
-  unsubscribe = () => {};
+  unsubscribe = () => { };
 
   constructor(props: Props<T_HT>) {
     super(props);
@@ -196,6 +196,12 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
 
   componentWillUnmount() {
     this.unsubscribe();
+
+    // Clean up all highlight roots
+    Object.values(this.highlightRoots).forEach(({ reactRoot }) => {
+      reactRoot.unmount();
+    });
+    this.highlightRoots = {};
   }
 
   findOrCreateHighlightLayer(page: number) {
@@ -393,7 +399,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         ...pageViewport.convertToPdfPoint(
           0,
           scaledToViewport(boundingRect, pageViewport, usePdfCoordinates).top -
-            scrollMargin,
+          scrollMargin,
         ),
         0,
       ],
@@ -643,21 +649,31 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
 
   private renderHighlightLayers() {
     const { pdfDocument } = this.props;
+
     for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber++) {
-      const highlightRoot = this.highlightRoots[pageNumber];
-      /** Need to check if container is still attached to the DOM as PDF.js can unload pages. */
-      if (highlightRoot?.container.isConnected) {
-        this.renderHighlightLayer(highlightRoot.reactRoot, pageNumber);
-      } else {
-        const highlightLayer = this.findOrCreateHighlightLayer(pageNumber);
-        if (highlightLayer) {
+      const highlightLayer = this.findOrCreateHighlightLayer(pageNumber);
+      if (highlightLayer) {
+        // Check if the layer is still connected to the document
+        if (!highlightLayer.isConnected) {
+          // If not connected, clean up the old root
+          if (this.highlightRoots[pageNumber]) {
+            this.highlightRoots[pageNumber].reactRoot.unmount();
+            delete this.highlightRoots[pageNumber];
+          }
+          continue;
+        }
+
+        // Create root only if it doesn't exist for this page
+        if (!this.highlightRoots[pageNumber]) {
           const reactRoot = createRoot(highlightLayer);
           this.highlightRoots[pageNumber] = {
             reactRoot,
             container: highlightLayer,
           };
-          this.renderHighlightLayer(reactRoot, pageNumber);
         }
+
+        // Use existing root to render
+        this.renderHighlightLayer(this.highlightRoots[pageNumber].reactRoot, pageNumber);
       }
     }
   }

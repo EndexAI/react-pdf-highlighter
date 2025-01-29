@@ -110,7 +110,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
   highlightRoots: {
     [page: number]: { reactRoot: Root; container: Element };
   } = {};
-  unsubscribe = () => { };
+  unsubscribe = () => {};
 
   constructor(props: Props<T_HT>) {
     super(props);
@@ -198,9 +198,9 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
     this.unsubscribe();
 
     // Clean up all highlight roots
-    Object.values(this.highlightRoots).forEach(({ reactRoot }) => {
+    for (const { reactRoot } of Object.values(this.highlightRoots)) {
       reactRoot.unmount();
-    });
+    }
     this.highlightRoots = {};
   }
 
@@ -399,7 +399,7 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         ...pageViewport.convertToPdfPoint(
           0,
           scaledToViewport(boundingRect, pageViewport, usePdfCoordinates).top -
-          scrollMargin,
+            scrollMargin,
         ),
         0,
       ],
@@ -673,7 +673,10 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
         }
 
         // Use existing root to render
-        this.renderHighlightLayer(this.highlightRoots[pageNumber].reactRoot, pageNumber);
+        this.renderHighlightLayer(
+          this.highlightRoots[pageNumber].reactRoot,
+          pageNumber,
+        );
       }
     }
   }

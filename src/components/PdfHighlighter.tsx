@@ -77,8 +77,6 @@ interface Props<T_HT> {
     transformSelection: () => void,
   ) => JSX.Element | null;
   enableAreaSelection: (event: MouseEvent) => boolean;
-  endexFileId?: string;
-  onFileLoad: (fileId?: string) => void;
 }
 
 const EMPTY_ID = "empty-id";
@@ -419,13 +417,11 @@ export class PdfHighlighter<T_HT extends IHighlight> extends PureComponent<
   };
 
   onDocumentReady = () => {
-    const { scrollRef, endexFileId, onFileLoad } = this.props;
+    const { scrollRef } = this.props;
 
     this.handleScaleValue();
 
     scrollRef(this.scrollTo);
-
-    onFileLoad(endexFileId);
   };
 
   onSelectionChange = () => {
